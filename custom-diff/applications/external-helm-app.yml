@@ -21,4 +21,16 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true  
+
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/template/spec/containers/0/env/1/valueFrom/secretKeyRef
+        - /spec/template/spec/containers/0/env/2/valueFrom/secretKeyRef
+    - group: ""
+      kind: Secret
+      jsonPointers:
+        - /data
+        - /metadata/creationTimestamp
    
